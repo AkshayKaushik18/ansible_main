@@ -160,6 +160,21 @@ read nish_tha
 done
 }
 
+check_prashast(){
+while true
+do
+echo -e "\e[0;36m${bold}Hint: Enter true or false to enable nishtha program ${normal}"
+echo -e "\e[0;38m${bold}please enter true or false.${normal}"
+read prash_ast
+        if ! [[ $prash_ast == "true" || $prash_ast == "false" ]]; then
+        echo -e "\e[0;31m${bold}Error - Please enter either true or false ${normal}"; fail=1
+                        else
+                        printf "prashast: $prash_ast\n" >> config_files/national_program_selector.yml
+                        break;
+        fi
+done
+}
+
 check_config_file(){
 if [[ -e "config_files/national_program_selector.yml" ]]; then
         while true; do
@@ -192,6 +207,7 @@ check_pmPoshan
 check_nas
 check_diksha
 check_nishtha
+check_prashast
 fi
 fi
 done
