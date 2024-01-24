@@ -1,18 +1,18 @@
 #!/bin/bash
 
-result=$(curl -X GET --header "Accept: /" "https://api.github.com/repos/Sunbird-cQube/processing-ms/releases/latest")
-echo "******************************************************* Response from server ********************************************************"
-key='zipball_url'
-value=$(echo $result | jq -r ".$key")
-echo "$result"
-echo "$value"
+#result=$(curl -X GET --header "Accept: /" "https://api.github.com/repos/Sunbird-cQube/processing-ms/releases/latest")
+#echo "******************************************************* Response from server ********************************************************"
+#key='zipball_url'
+#value=$(echo $result | jq -r ".$key")
+#echo "$result"
+#echo "$value"
 rm -rf cqube-ingest.zip
 rm -rf Sunbird-cQube*
 echo "***************************************************** Downloading the zip file ******************************************************"
-wget -O cqube-ingest.zip $value
+wget -O cqube-ingest.zip 'https://api.github.com/repos/dicdiksha/processing-ms/zipball/releasev5.0.3_vsk-Jan_23_I'
 echo "****************************************************** Unzipping the zip file *******************************************************"
 unzip cqube-ingest.zip
-mv Sunbird-cQube* Sunbird-cQube-processing-ms
+mv dicdiksha* Sunbird-cQube-processing-ms
 cd Sunbird-cQube-processing-ms/impl/c-qube
 mkdir debug
 echo "***************************************************** Adding Database_url to the .env file ******************************************"
